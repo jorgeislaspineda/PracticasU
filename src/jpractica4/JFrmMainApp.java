@@ -160,7 +160,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         this.jTextField1.setText("");
         this.jTextField2.setText("");
-        this.jTextField3.setText("7");
+        this.jTextField3.setText("7rt");
         this.jTextField4.setText("e");
     }//GEN-LAST:event_LimpiarActionPerformed
 
