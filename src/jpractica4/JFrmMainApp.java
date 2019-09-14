@@ -161,7 +161,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
         this.jTextField1.setText("");
         this.jTextField2.setText("");
         this.jTextField3.setText("");
-        this.jTextField4.setText("");
+        this.jTextField4.setText("e");
     }//GEN-LAST:event_LimpiarActionPerformed
 
     /**
