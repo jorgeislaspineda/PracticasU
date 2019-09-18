@@ -5,6 +5,9 @@
  */
 package jpractica4;
 
+import java.sql.*;
+
+
 /**
  *
  * @author A470208
@@ -145,7 +148,28 @@ public class JFrmMainApp extends javax.swing.JFrame {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
-        
+ 
+      // create a mysql database connection
+      String myDriver = "org.gjt.mm.mysql.Driver";
+      String myUrl = "jdbc:mysql://localhost/matricula";
+    try
+    {
+      Class.forName(myDriver);
+      Connection conn = DriverManager.getConnection(myUrl, "root", "jp780213");
+      
+      Statement st = conn.createStatement();
+
+      // note that i'm leaving "date_created" out of this insert statement
+      st.executeUpdate("INSERT INTO agenda (Nombre, Apellido, Mail, Telefono) "
+          +"VALUES (" + this.jTextField1.getText().toString() + "," + this.jTextField2.getText().toString()+","+ this.jTextField3.getText().toString() + "," + this.jTextField4.getText().toString() + ")");
+
+      conn.close();
+    }
+    catch (Exception e)
+    {
+      System.err.println("Got an exception!");
+      System.err.println(e.getMessage());
+    }  
       
         
         
@@ -160,8 +184,8 @@ public class JFrmMainApp extends javax.swing.JFrame {
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         this.jTextField1.setText("");
         this.jTextField2.setText("");
-        this.jTextField3.setText("7rt");
-        this.jTextField4.setText("e");
+        this.jTextField3.setText("");
+        this.jTextField4.setText("");
     }//GEN-LAST:event_LimpiarActionPerformed
 
     /**
