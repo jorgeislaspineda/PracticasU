@@ -8,6 +8,9 @@ package jpractica4;
 import java.sql.*;
 
 
+
+
+
 /**
  *
  * @author A470208
@@ -37,7 +40,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTxtTelefono = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -61,7 +64,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
         jLabel4.setText("Mail:");
         jLabel4.setName("LMail"); // NOI18N
 
-        jTextField4.setName("TxtMail"); // NOI18N
+        jTxtTelefono.setName("TxtMail"); // NOI18N
 
         jButton1.setLabel("Aceptar");
         jButton1.setName("BtnAceptar"); // NOI18N
@@ -77,7 +80,6 @@ public class JFrmMainApp extends javax.swing.JFrame {
         });
 
         jButton2.setText("Limpiar");
-        jButton2.setActionCommand("Limpiar");
         jButton2.setName("BtnLimpiar"); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +103,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(27, 27, 27)
@@ -131,7 +133,7 @@ public class JFrmMainApp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -148,20 +150,23 @@ public class JFrmMainApp extends javax.swing.JFrame {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
- 
+  
       // create a mysql database connection
+     try
+    {
+      // create a mysql database connection
+      
+       String User = "root";
       String myDriver = "org.gjt.mm.mysql.Driver";
       String myUrl = "jdbc:mysql://localhost/matricula";
-    try
-    {
       Class.forName(myDriver);
-      Connection conn = DriverManager.getConnection(myUrl, "root", "jp780213");
+      Connection conn = DriverManager.getConnection(myUrl, User, "jp780213");
       
       Statement st = conn.createStatement();
 
       // note that i'm leaving "date_created" out of this insert statement
       st.executeUpdate("INSERT INTO agenda (Nombre, Apellido, Mail, Telefono) "
-          +"VALUES (" + this.jTextField1.getText().toString() + "," + this.jTextField2.getText().toString()+","+ this.jTextField3.getText().toString() + "," + this.jTextField4.getText().toString() + ")");
+          +"VALUES (" + this.jTextField1.getText().toString() + "," + this.jTextField2.getText().toString()+","+ this.jTextField3.getText().toString() + "," + this.jTxtTelefono.getText().toString() + ")");
 
       conn.close();
     }
@@ -169,23 +174,20 @@ public class JFrmMainApp extends javax.swing.JFrame {
     {
       System.err.println("Got an exception!");
       System.err.println(e.getMessage());
-    }  
-      
-        
-        
+    }
         
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         //System.out.println(this.jTextField1.getText());
-        this.jTextField2.setText(this.jTextField1.getText());
+        //this.jTextField2.setText(this.jTextField1.getText());
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         this.jTextField1.setText("");
         this.jTextField2.setText("");
         this.jTextField3.setText("");
-        this.jTextField4.setText("");
+        this.jTxtTelefono.setText("");
     }//GEN-LAST:event_LimpiarActionPerformed
 
     /**
@@ -233,6 +235,6 @@ public class JFrmMainApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTxtTelefono;
     // End of variables declaration//GEN-END:variables
 }
